@@ -14,7 +14,7 @@ no help, use at your own risk
 if you don't know what to do, don't do anything
 
 ______________
-# config.json
+## config.json
 
 allows access for this IP range. Adjust to your own situation.
 
@@ -25,37 +25,36 @@ enables the API by making it listen on the specified IP address and port. 0.0.0.
 "api-bind": "0.0.0.0:4068"
 
 ______________
-spisek.list
+## spisek.list
 
 contains the last term of the miner's IP (aaa.bbb.ccc.XXX) and name of that miner, one per line
 
 e.g.:
+```
 110  S9a
 111  S9b
 etc.
-
+```
 ______________
-watch.sh
+## watch.sh
 
 change refreshing time (depending on the number of devices)
 
 ______________
-watch-screen.sh
+## watch-screen.sh
 
 change pool names (as you have set in config.json) and colors
 
 ______________
-check-all
+## check-all
 
 change from my IP 192.168.100.xxx to your also port 4068
 
 ______________
-set up aliases
-
+## set up aliases
+```bash
 alias wa='~/watch.sh'                                      # start
-
 alias rwa='screen -x Watch'                                # show screen
-
 alias xwa='screen -S Watch -X quit 1>/dev/null 2>&1'       # stop screen
-
 alias sl='screen -ls'                                      # list screen's
+```
