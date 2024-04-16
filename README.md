@@ -7,7 +7,7 @@ read this firt!!
 
 thx Oink
 
-tailored to my needs, results in MHs
+tailored to my needs, each miner in MHs (mega hash / s)
 
 customization requires some prior programming knowledge
 
@@ -61,6 +61,7 @@ alias sl='screen -ls'                                      # list screen's
 
 ______________
 ## example
+in color
 
 ```
 ["S8x","192.168.100.193","luckpool","4.176"]
