@@ -11,11 +11,9 @@ tailored to my needs, each miner is now in MHs (mega hash / s)
 
 customization requires some prior programming knowledge
 
-+ Rdeče besedilo
 **no help, use at your own risk**
-+ Zeleno besedilo
+
 **if you don't know what to do, don't do anything**
-- Zeleno besedilo
 
 ______________
 ## config.json
