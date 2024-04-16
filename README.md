@@ -6,9 +6,12 @@ https://github.com/Oink70/Android-Mining/tree/main/monitoring
 thx Oink
 
 tailored to my needs
+
 customization requires some prior programming knowledge
-**no help, use at your own risk**
-**if you don't know what to do, don't do anything**
+
+no help, use at your own risk
+
+if you don't know what to do, don't do anything
 
 ______________
 config.json
