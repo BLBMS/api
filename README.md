@@ -73,4 +73,4 @@ in color
 [" VRSC/day ="," 2.76 "," USDT/day ="," 3.01 "]
 [" time ="," 20:08:28 "," iteration ="," 394 "]
 ```
-api summary.png
+!(api summary.png)
