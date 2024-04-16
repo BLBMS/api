@@ -9,21 +9,19 @@ tailored to my needs
 
 customization requires some prior programming knowledge
 
-no help, use at your own risk
+**no help, use at your own risk**
 
-if you don't know what to do, don't do anything
+**if you don't know what to do, don't do anything**
 
 ______________
 ## config.json
 
+```
 allows access for this IP range. Adjust to your own situation.
-
 "api-allow": "192.168.xxx.0/24",
-
 enables the API by making it listen on the specified IP address and port. 0.0.0.0 signifies all adapters and IPs.
-
 "api-bind": "0.0.0.0:4068"
-
+```
 ______________
 ## spisek.list
 
