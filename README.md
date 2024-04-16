@@ -11,9 +11,9 @@ tailored to my needs, each miner is now in MHs (mega hash / s)
 
 customization requires some prior programming knowledge
 
-**no help, use at your own risk**
+<span style="color:red">no help, use at your own risk
 
-**if you don't know what to do, don't do anything**
+if you don't know what to do, don't do anything</span>
 
 ______________
 ## config.json
