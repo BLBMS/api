@@ -10,13 +10,19 @@ SCRIPTPATH=$(dirname $(realpath $0))
 BUILD="["
 act=0
 inact=0
-khsall=0
+mhsall=0.0
 for i in $LIST; do
     ii=$(echo "$i" | rev | cut -d '.' -f 1 | rev)
     device=$(grep -w "$ii" spisek.list | cut -f 2 | rev | cut -d ' ' -f 1 | rev)
     RESPONSE=$(printf "{\"PHONE\":\"$device\",\"HOST\":\"$i\",\""; $SCRIPTPATH/api.pl -c summary -a $i -p 4068 | tr -d '\0' | sed -r \
     's/=/":"/g; s/;/\",\"/g' | sed 's/|/",/g')$(printf "\""; $SCRIPTPATH/api.pl -c pool -a $i -p 4068 | tr -d \
     '\0' | sed -r 's/=/":"/g' | sed -r 's/;/\",\"/g' | sed 's/|/"},/g')
+    KHS=$(echo "$RESPONSE" | grep -o '"KHS":"[0-9.]\+"' | cut -d '"' -f 4)
+    MHS=$(echo "scale=3; $KHS / 1000" | bc)
+    if (( $(echo "$MHS < 1000" | bc -l) )); then
+        MHS=$(printf "%.3f" $MHS)
+    fi
+    RESPONSE=$(echo "$RESPONSE" | sed "s/\"KHS\":\"$KHS\"/\"MHS\":\"$MHS\"/")
     if [[ "$RESPONSE" == *"No Connect"* ]]; then
         inact=$((inact+1))
         BUILD=$BUILD"{\"PHONE\":\"$device\",\"HOST\":\"$i\"},"
@@ -24,15 +30,14 @@ for i in $LIST; do
         BUILD=$BUILD$RESPONSE
         RESP=$(echo "$RESPONSE" | sed 's/,$//')
         act=$((act+1))
-        khs1=$(echo "$RESP" | jq -r '.KHS' | awk -F. '{print $1}')
-        khsall=$((khsall + khs1))
+        mhs=$(echo "$RESP" | grep -o '"MHS":"[0-9.]\+"' | cut -d '"' -f 4)
+        mhsall=$(bc <<< "scale=3; $mhsall + $mhs")
     fi
 done
 iteration=$(<iteration.txt)
 iteration=$((iteration + 1))
 echo $iteration > iteration.txt
 cur_time=$(date +'%T')
-mhsall=$(bc <<< "scale=3; $khsall / 1000")
 data=$(python3 minestat_api_VRSC.py)
 data2=$(echo "$data" | sed "s/'/\"/g")
 reward=$(python3 -c "import json, sys; data = json.load(sys.stdin); print(data[0]['reward'])" <<< "$data2")
@@ -42,10 +47,10 @@ my_reward=$(echo "scale=10; $reward24MHs * $mhsall" | bc)
 my_reward_USDT=$(echo "scale=10; $my_reward * $price" | bc)
 my_reward_USDT2=$(printf "%.2f" $my_reward_USDT)
 my_reward2=$(printf "%.2f" $my_reward)
-BUILD=$BUILD"{\"PHONE\":\"ALL\",\"HOST\":\"PHONES=\",\"POOL\":\"$mhsall\",\"KHS\":\"MHs\"},"
-BUILD=$BUILD"{\"PHONE\":\"active=\",\"HOST\":\"$act\",\"POOL\":\"inactive=\",\"KHS\":\"$inact\"},"
-BUILD=$BUILD"{\"PHONE\":\"VRSC_24h=\",\"HOST\":\"$my_reward2\",\"POOL\":\"USDT_24h=\",\"KHS\":\"$my_reward_USDT2\"},"
-BUILD=$BUILD"{\"PHONE\":\"time=\",\"HOST\":\"$cur_time\",\"POOL\":\"iteration=\",\"KHS\":\"$iteration\"},"
+BUILD=$BUILD"{\"PHONE\":\"ALL\",\"HOST\":\"PHONES=\",\"POOL\":\"$mhsall\",\"MHS\":\"MHs\"},"
+BUILD=$BUILD"{\"PHONE\":\"active=\",\"HOST\":\"$act\",\"POOL\":\"inactive=\",\"MHS\":\"$inact\"},"
+BUILD=$BUILD"{\"PHONE\":\"VRSC_24h=\",\"HOST\":\"$my_reward2\",\"POOL\":\"USDT_24h=\",\"MHS\":\"$my_reward_USDT2\"},"
+BUILD=$BUILD"{\"PHONE\":\"time=\",\"HOST\":\"$cur_time\",\"POOL\":\"iteration=\",\"MHS\":\"$iteration\"},"
 JSON=$(echo $BUILD | tr -d '\r\n' | sed "s/.\{0,2\}$//; /^$/d"; printf "}]")
-# echo $JSON | jq '[.[] | {PHONE,HOST,POOL,USER,KHS,DIFF,ACC,REJ,WAIT,UPTIME,TS,POOL}]' | less -N  # for testing
+# echo $JSON | jq '[.[] | {PHONE,HOST,POOL,USER,MHS,DIFF,ACC,REJ,WAIT,UPTIME,TS,POOL}]' | less -N  # for testing
 echo $JSON
