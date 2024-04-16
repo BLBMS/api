@@ -3,11 +3,11 @@
 
 https://github.com/Oink70/Android-Mining/tree/main/monitoring
 
-read this firt!!
+read Oink's README.md first!!
 
-thx Oink
+thx Oink :D
 
-tailored to my needs, each miner in MHs (mega hash / s)
+tailored to my needs, each miner is now in MHs (mega hash / s)
 
 customization requires some prior programming knowledge
 
@@ -48,7 +48,7 @@ change pool names (as you have set in config.json) and colors
 ______________
 ## check-all
 
-change from my IP 192.168.100.xxx to your also port 4068
+change to your IP and port
 
 ______________
 ## set up aliases
