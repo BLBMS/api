@@ -1,10 +1,11 @@
 #!/bin/bash
 refreshing=60   # refreshing time in sec
+rm -f iteration.txt
 echo "0" >> iteration.txt
 screen -wipe 1>/dev/null 2>&1
-if screen -ls | grep -i Watch;
-then
+if screen -ls | grep -i Watch; then
   printf "\n\e[93m WATCH is already running! (rwa) to see \e[0m\n"
+  sleep 2
   screen -r Watch
 else
   printf "\n\e[93m Starting WATCH! \e[0m\n"
