@@ -1,9 +1,13 @@
 #!/bin/bash
-cd ~/
 LIST=""
 while read line; do
     ip=$(echo "$line" | awk '{print $1}')
     LIST+="192.168.100.$ip "
+    name=$(echo "$line" | awk '{print $2}')
+    length=$(echo -n "$name" | wc -c)
+    if (( length > max_length )); then
+        max_length=$length
+    fi
 done < spisek.list
 LIST=$(echo "$LIST" | sed 's/ *$//')
 SCRIPTPATH=$(dirname $(realpath $0))
@@ -14,6 +18,9 @@ mhsall=0.0
 for i in $LIST; do
     ii=$(echo "$i" | rev | cut -d '.' -f 1 | rev)
     device=$(grep -w "$ii" spisek.list | cut -f 2 | rev | cut -d ' ' -f 1 | rev)
+    length=$(echo -n "$device" | wc -c)
+    spaces=$(( max_length - length ))
+    device=$(printf "%s%*s" "$device" $spaces "")
     RESPONSE=$(printf "{\"PHONE\":\"$device\",\"HOST\":\"$i\",\""; $SCRIPTPATH/api.pl -c summary -a $i -p 4068 | tr -d '\0' | sed -r \
     's/=/":"/g; s/;/\",\"/g' | sed 's/|/",/g')$(printf "\""; $SCRIPTPATH/api.pl -c pool -a $i -p 4068 | tr -d \
     '\0' | sed -r 's/=/":"/g' | sed -r 's/;/\",\"/g' | sed 's/|/"},/g')
@@ -47,10 +54,10 @@ my_reward=$(echo "scale=10; $reward24MHs * $mhsall" | bc)
 my_reward_USDT=$(echo "scale=10; $my_reward * $price" | bc)
 my_reward_USDT2=$(printf "%.2f" $my_reward_USDT)
 my_reward2=$(printf "%.2f" $my_reward)
-BUILD=$BUILD"{\"PHONE\":\"ALL\",\"HOST\":\"PHONES=\",\"POOL\":\"$mhsall\",\"MHS\":\"MHs\"},"
-BUILD=$BUILD"{\"PHONE\":\"active=\",\"HOST\":\"$act\",\"POOL\":\"inactive=\",\"MHS\":\"$inact\"},"
-BUILD=$BUILD"{\"PHONE\":\"VRSC_24h=\",\"HOST\":\"$my_reward2\",\"POOL\":\"USDT_24h=\",\"MHS\":\"$my_reward_USDT2\"},"
-BUILD=$BUILD"{\"PHONE\":\"time=\",\"HOST\":\"$cur_time\",\"POOL\":\"iteration=\",\"MHS\":\"$iteration\"},"
+BUILD=$BUILD"{\"PHONE\":\" ALL\",\"HOST\":\"PHONES =\",\"POOL\":\" $mhsall \",\"MHS\":\" MHs \"},"
+BUILD=$BUILD"{\"PHONE\":\" active =\",\"HOST\":\" $act \",\"POOL\":\" inactive =\",\"MHS\":\" $inact \"},"
+BUILD=$BUILD"{\"PHONE\":\" VRSC/day =\",\"HOST\":\" $my_reward2 \",\"POOL\":\" USDT/day =\",\"MHS\":\" $my_reward_USDT2 \"},"
+BUILD=$BUILD"{\"PHONE\":\" time =\",\"HOST\":\" $cur_time \",\"POOL\":\" iteration =\",\"MHS\":\" $iteration \"},"
 JSON=$(echo $BUILD | tr -d '\r\n' | sed "s/.\{0,2\}$//; /^$/d"; printf "}]")
 # echo $JSON | jq '[.[] | {PHONE,HOST,POOL,USER,MHS,DIFF,ACC,REJ,WAIT,UPTIME,TS,POOL}]' | less -N  # for testing
 echo $JSON
