@@ -56,3 +56,16 @@ alias rwa='screen -x Watch'                                # show screen
 alias xwa='screen -S Watch -X quit 1>/dev/null 2>&1'       # stop screen
 alias sl='screen -ls'                                      # list screen's
 ```
+
+______________
+## example
+
+```
+["S8x","192.168.100.193","luckpool","4076.74"]
+["S8y","192.168.100.194","luckpool","3767.80"]
+["S8z","192.168.100.195","luckpool","3929.28"]
+["ALL","PHONES=","362.677","MHs"]
+["active=","91","inactive=","2"]
+["VRSC_24h=","3.74","USDT_24h=","3.96"]
+["time=","21:12:51","iteration=","324"]
+```
