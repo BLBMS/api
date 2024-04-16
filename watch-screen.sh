@@ -20,8 +20,8 @@ C_Off='\x1B[0m'       # izklopi obarvanje
 -e "s/zerg-solo/${Green}&${C_Off}/g" \
 -e "s/ALL/${iRed}&${iRed}/g" \
 -e "s/active/${iGreen}&${iGreen}/g" \
--e "s/VRSC_24h/${iYellow}&${iYellow}/g" \
--e "s/USDT_24h/${iBlue}&${iBlue}/g" \
+-e "s/VRSC\/day/${iYellow}&${iYellow}/g" \
+-e "s/USDT\/day/${iBlue}&${iBlue}/g" \
 -e "s/time/${iMagenta}&${iMagenta}/g" \
 -e "s/]/${C_Off}&${C_Off}/g" \
  | column
