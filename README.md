@@ -3,6 +3,8 @@
 
 https://github.com/Oink70/Android-Mining/tree/main/monitoring
 
+read this firt!!
+
 thx Oink
 
 tailored to my needs
