@@ -1,5 +1,5 @@
 # api summary
-## adds summary for all miners - based on Oinks-API monitoring
+## adds summary for all miners - based on Oinks-API monitoring for ccminer
 
 https://github.com/Oink70/Android-Mining/tree/main/monitoring
 
