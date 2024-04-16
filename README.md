@@ -61,16 +61,5 @@ alias sl='screen -ls'                                      # list screen's
 
 ______________
 ## example
-in color
 
-```
-...
-["long_name","192.168.100.193","luckpool","4.176"]
-["short    ","192.168.100.194","luckpool","4.267"]
-["S8z      ","192.168.100.195","luckpool","4.092"]
-[" ALL","PHONES ="," 361.106 "," MHs "]
-[" active ="," 91 "," inactive ="," 2 "]
-[" VRSC/day ="," 2.76 "," USDT/day ="," 3.01 "]
-[" time ="," 20:08:28 "," iteration ="," 394 "]
-```
 ![README.md](api_summary.png)
