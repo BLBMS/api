@@ -55,7 +55,7 @@ ______________
 ```bash
 alias wa='~/watch.sh'                                      # start
 alias rwa='screen -x Watch'                                # show screen
-alias xwa='screen -S Watch -X quit 1>/dev/null 2>&1'       # stop screen
+alias xwa='screen -S Watch -X quit 1>/dev/null 2>&1'       # stop screens
 alias sl='screen -ls'                                      # list screen's
 ```
 
@@ -73,3 +73,4 @@ in color
 [" VRSC/day ="," 2.76 "," USDT/day ="," 3.01 "]
 [" time ="," 20:08:28 "," iteration ="," 394 "]
 ```
+api summary.png
