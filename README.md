@@ -7,7 +7,7 @@ read this firt!!
 
 thx Oink
 
-tailored to my needs
+tailored to my needs, results in MHs
 
 customization requires some prior programming knowledge
 
@@ -63,9 +63,9 @@ ______________
 ## example
 
 ```
-["S8x","192.168.100.193","luckpool","4076.74"]
-["S8y","192.168.100.194","luckpool","3767.80"]
-["S8z","192.168.100.195","luckpool","3929.28"]
+["S8x","192.168.100.193","luckpool","4.176"]
+["S8y","192.168.100.194","luckpool","4.267"]
+["S8z","192.168.100.195","luckpool","4.092"]
 ["ALL","PHONES=","362.677","MHs"]
 ["active=","91","inactive=","2"]
 ["VRSC_24h=","3.74","USDT_24h=","3.96"]
