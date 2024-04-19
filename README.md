@@ -20,15 +20,14 @@ ______________
 
 ```
 allows access for this IP range. Adjust to your own situation.
-"api-allow": "192.168.xxx.0/24",
+"api-allow": "0.0.0.0/0",
 enables the API by making it listen on the specified IP address and port. 0.0.0.0 signifies all adapters and IPs.
 "api-bind": "0.0.0.0:4068"
 ```
 ______________
 ## device.list
 
-make new file with `nano device.list`
-contains the miners' IPs (aaa.bbb.ccc.ddd) and the name of that miner, one per line (add a blank line at the end of the file)
+make a new file with `nano device.list` containing the IPs of the miners (aaa.bbb.ccc.ddd) and the name of that miner, one per line (add a blank line at the end of the file)
 
 e.g.:
 ```
@@ -50,7 +49,7 @@ change pool names (as you have set in config.json) and colors
 ______________
 ## check-all
 
-change to your IP and port
+change to your port
 
 ______________
 ## set up aliases
