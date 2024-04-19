@@ -11,6 +11,8 @@ tailored to my needs, each miner is now in MHs (mega hash / s)
 
 customization requires some prior programming knowledge
 
+you definitely need this: `sudo apt install screen bc -y`
+
 **no help, use at your own risk**
 
 **if you don't know what to do, don't do anything**
