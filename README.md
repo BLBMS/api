@@ -27,7 +27,7 @@ enables the API by making it listen on the specified IP address and port. 0.0.0.
 ______________
 ## spisek.list
 
-contains the last term of the miner's IP (aaa.bbb.ccc.XXX) and name of that miner, one per line
+contains the last term of the miner's IP (aaa.bbb.ccc.XXX) and name of that miner, one per line (add an empty line at the end of file)
 
 e.g.:
 ```
