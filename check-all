@@ -17,7 +17,7 @@ inact=0
 mhsall=0.0
 for i in $LIST; do
     ii=$(echo "$i" | rev | cut -d '.' -f 1 | rev)
-    device=$(grep -w "$ii" spisek.list | cut -f 2 | rev | cut -d ' ' -f 1 | rev)
+    device=$(grep -w "$ii" device.list | cut -f 2 | rev | cut -d ' ' -f 1 | rev)
     length=$(echo -n "$device" | wc -c)
     spaces=$(( max_length - length ))
     device=$(printf "%s%*s" "$device" $spaces "")
