@@ -1,15 +1,15 @@
 #!/bin/bash
-Green='\x1B[32m'      # zelena
-Blue='\x1B[36m'       # modra
-Magenta='\x1B[35m'    # vijolična
-Red='\x1B[31m'        # rdeča
-Yellow='\x1B[33m'     # rumena
-iGreen='\x1B[1;32m'   # svetlo zelena
-iBlue='\x1B[1;36m'    # svetlo modra
-iMagenta='\x1B[1;35m' # svetlo vijolična
-iRed='\x1B[1;31m'     # svetlo rdeča
-iYellow='\x1B[1;33m'  # svetlo rumena
-C_Off='\x1B[0m'       # izklopi obarvanje
+Green='\x1B[32m'
+Blue='\x1B[36m'
+Magenta='\x1B[35m'
+Red='\x1B[31m'
+Yellow='\x1B[33m'
+iGreen='\x1B[1;32m'
+iBlue='\x1B[1;36m'
+iMagenta='\x1B[1;35m'
+iRed='\x1B[1;31m'
+iYellow='\x1B[1;33m'
+C_Off='\x1B[0m'
 ./check-all | jq -c '.[] | [.PHONE,.HOST,.POOL,.MHS]' | sed \
 -e "s/null/${Red}&${C_Off}/g" \
 -e "s/mrr/${Green}&${C_Off}/g" \
