@@ -36,7 +36,7 @@ enables the API by making it listen on the specified IP address and port. 0.0.0.
 ______________
 ## device.list
 
-make a new file with `nano device.list` containing the IPs of the miners (aaa.bbb.ccc.ddd) and the name of that miner, one per line (add a blank line at the end of the file)
+make a new file with `nano device.list` containing the IPs of the miners (aaa.bbb.ccc.ddd) and the name of that miner separated by one tab or space, one per line, add a blank line at the end of the file
 
 e.g.:
 ```
