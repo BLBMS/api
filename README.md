@@ -1,5 +1,14 @@
 # api summary
 ## adds summary for all miners - based on Oinks-API monitoring for ccminer
+displays:
+- sum of all miners hashrate
+- number of active and inactive miners
+- assumed revenue in VRSC and USDT
+- output time and number of output iterations (for performance control)
+
+additionally:
+- colors the different pools in different colors
+- specially colors all hashrates that are less than 1, 2 or 3 MHs
 
 https://github.com/Oink70/Android-Mining/tree/main/monitoring
 
@@ -36,7 +45,7 @@ enables the API by making it listen on the specified IP address and port. 0.0.0.
 ______________
 ## device.list
 
-make a new file with `nano device.list` containing the IPs of the miners (aaa.bbb.ccc.ddd) and the name of that miner separated by one tab or space, one per line, add a blank line at the end of the file
+make a new file with `nano device.list` containing the IPs of the miners (xxx.xxx.xxx.xxx) and the name of that miner separated by one tab or space, one per line, add a blank line at the end of the file
 
 e.g.:
 ```
