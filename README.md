@@ -10,6 +10,8 @@ additionally:
 - colors the different pools in different colors
 - specially colors all hashrates that are less than 1, 2 or 3 MHs
 
+______________
+
 https://github.com/Oink70/Android-Mining/tree/main/monitoring
 
 read Oink's README.md first!!
@@ -81,4 +83,4 @@ alias sl='screen -ls'                                      # list screens
 ______________
 ## example
 
-![README.md](api_summary.png)
+![README.md](api_summary1.png)
