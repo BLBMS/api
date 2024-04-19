@@ -57,7 +57,7 @@ ______________
 alias wa='~/watch.sh'                                      # start
 alias rwa='screen -x Watch'                                # show screen
 alias xwa='screen -S Watch -X quit 1>/dev/null 2>&1'       # stop screens
-alias sl='screen -ls'                                      # list screen's
+alias sl='screen -ls'                                      # list screens
 ```
 
 ______________
