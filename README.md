@@ -25,15 +25,17 @@ enables the API by making it listen on the specified IP address and port. 0.0.0.
 "api-bind": "0.0.0.0:4068"
 ```
 ______________
-## spisek.list
+## device.list
 
-contains the last term of the miner's IP (aaa.bbb.ccc.XXX) and name of that miner, one per line (add an empty line at the end of file)
+make new file with `nano device.list`
+contains the miners' IPs (aaa.bbb.ccc.ddd) and the name of that miner, one per line (add a blank line at the end of the file)
 
 e.g.:
 ```
-110  S9a
-111  S9b
+192.168.100.110  Miner
+127.1.0.111  Worker
 etc.
+
 ```
 ______________
 ## watch.sh
