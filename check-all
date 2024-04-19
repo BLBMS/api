@@ -24,21 +24,23 @@ for i in $LIST; do
     RESPONSE=$(printf "{\"PHONE\":\"$device\",\"HOST\":\"$i\",\""; $SCRIPTPATH/api.pl -c summary -a $i -p 4068 | tr -d '\0' | sed -r \
     's/=/":"/g; s/;/\",\"/g' | sed 's/|/",/g')$(printf "\""; $SCRIPTPATH/api.pl -c pool -a $i -p 4068 | tr -d \
     '\0' | sed -r 's/=/":"/g' | sed -r 's/;/\",\"/g' | sed 's/|/"},/g')
-    KHS=$(echo "$RESPONSE" | grep -o '"KHS":"[0-9.]\+"' | cut -d '"' -f 4)
-    MHS=$(echo "scale=3; $KHS / 1000" | bc)
-    if (( $(echo "$MHS < 1000" | bc -l) )); then
-        MHS=$(printf "%.3f" $MHS)
-    fi
-    RESPONSE=$(echo "$RESPONSE" | sed "s/\"KHS\":\"$KHS\"/\"MHS\":\"$MHS\"/")
-    if [[ "$RESPONSE" == *"No Connect"* ]]; then
-        inact=$((inact+1))
-        BUILD=$BUILD"{\"PHONE\":\"$device\",\"HOST\":\"$i\"},"
-    else
-        BUILD=$BUILD$RESPONSE
-        RESP=$(echo "$RESPONSE" | sed 's/,$//')
-        act=$((act+1))
-        mhs=$(echo "$RESP" | grep -o '"MHS":"[0-9.]\+"' | cut -d '"' -f 4)
-        mhsall=$(bc <<< "scale=3; $mhsall + $mhs")
+    if grep -q '"KHS"' <<< "$RESPONSE"; then
+        KHS=$(echo "$RESPONSE" | grep -o '"KHS":"[0-9.]\+"' | cut -d '"' -f 4)
+        MHS=$(echo "scale=3; $KHS / 1000" | bc)
+        if (( $(echo "$MHS < 1000" | bc -l) )); then
+            MHS=$(printf "%.3f" $MHS)
+        fi
+        RESPONSE=$(echo "$RESPONSE" | sed "s/\"KHS\":\"$KHS\"/\"MHS\":\"$MHS\"/")
+        if [[ "$RESPONSE" == *"No Connect"* ]]; then
+            inact=$((inact+1))
+            BUILD=$BUILD"{\"PHONE\":\"$device\",\"HOST\":\"$i\"},"
+        else
+            BUILD=$BUILD$RESPONSE
+            RESP=$(echo "$RESPONSE" | sed 's/,$//')
+            act=$((act+1))
+            mhs=$(echo "$RESP" | grep -o '"MHS":"[0-9.]\+"' | cut -d '"' -f 4)
+            mhsall=$(bc <<< "scale=3; $mhsall + $mhs")
+        fi
     fi
 done
 iteration=$(<iteration.txt)
