@@ -21,7 +21,7 @@ C_Off='\x1B[0m'
 -e "s/eu.cloudiko.io/${Magenta}&${C_Off}/g" \
 -e "s/pool.verus.io/${Red}&${C_Off}/g" \
 -e "s/zerg-solo/${Green}&${C_Off}/g" \
--e "s/ALL/${iRed}&${iRed}/g" \
+-e "s/all/${iRed}&${iRed}/g" \
 -e "s/active/${iGreen}&${iGreen}/g" \
 -e "s/VRSC\/day/${iYellow}&${iYellow}/g" \
 -e "s/USDT\/day/${iBlue}&${iBlue}/g" \
