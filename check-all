@@ -1,6 +1,8 @@
 #!/bin/bash
+all=0
 LIST=""
 while read line; do
+    all=$((all+1))
     ip=$(echo "$line" | awk '{print $1}')
     LIST+="$ip "
     name=$(echo "$line" | awk '{print $2}')
@@ -56,8 +58,8 @@ my_reward=$(echo "scale=10; $reward24MHs * $mhsall" | bc)
 my_reward_USDT=$(echo "scale=10; $my_reward * $price" | bc)
 my_reward_USDT2=$(printf "%.2f" $my_reward_USDT)
 my_reward2=$(printf "%.2f" $my_reward)
-BUILD=$BUILD"{\"PHONE\":\" ALL\",\"HOST\":\"PHONES =\",\"POOL\":\" $mhsall \",\"MHS\":\" MHs \"},"
-BUILD=$BUILD"{\"PHONE\":\" active =\",\"HOST\":\" $act \",\"POOL\":\" inactive =\",\"MHS\":\" $inact \"},"
+BUILD=$BUILD"{\"PHONE\":\" all $all \",\"HOST\":\"miners =\",\"POOL\":\" $mhsall \",\"MHS\":\" MHs \"},"
+BUILD=$BUILD"{\"PHONE\":\" active =\",\"HOST\":\" $act \",\"POOL\":\" inactive \/ off =\",\"MHS\":\" $inact \/ $off \"},"
 BUILD=$BUILD"{\"PHONE\":\" VRSC/day =\",\"HOST\":\" $my_reward2 \",\"POOL\":\" USDT/day =\",\"MHS\":\" $my_reward_USDT2 \"},"
 BUILD=$BUILD"{\"PHONE\":\" time =\",\"HOST\":\" $cur_time \",\"POOL\":\" iteration =\",\"MHS\":\" $iteration \"},"
 JSON=$(echo $BUILD | tr -d '\r\n' | sed "s/.\{0,2\}$//; /^$/d"; printf "}]")
