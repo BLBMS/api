@@ -2,7 +2,7 @@
 ## adds summary for all miners - based on Oinks-API monitoring for ccminer
 displays:
 - sum of all miners hashrate
-- number of active and inactive miners
+- number of active and inactive miners and number unreachable devices from .list (OFF)
 - assumed revenue in VRSC and USDT
 - output time and number of output iterations (for performance control)
 
@@ -83,6 +83,4 @@ alias sl='screen -ls'                                      # list screens
 ______________
 ## example
 
-![README.md](api_summary2.png)
-
-![README.md](api_summary1.png)
+![README.md](api_summary3.png)
