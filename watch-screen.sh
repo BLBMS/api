@@ -9,6 +9,7 @@ iBlue='\x1B[1;36m'
 iMagenta='\x1B[1;35m'
 iRed='\x1B[1;31m'
 iYellow='\x1B[1;33m'
+iWhite='\x1B[1;37m'
 C_Off='\x1B[0m'
 ./check-all | jq -c '.[] | [.PHONE,.HOST,.POOL,.MHS]' | sed \
 -e "s/null/${Red}&${C_Off}/g" \
