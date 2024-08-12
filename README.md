@@ -23,13 +23,14 @@ tailored to my needs, each miner is now in MHs (mega hash / s)
 customization requires some prior programming knowledge
 
 you definitely need this:
-```sudo apt-get update
+```
+sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install python3 -y
 sudo apt install python3-pip -y
 sudo pip3 install requests
-sudo apt install nano screen bc jq -y```
-
+sudo apt install nano screen bc jq -y
+```
 
 **no help, use at your own risk**
 
